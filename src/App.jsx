@@ -14,14 +14,14 @@ function useTodos() {
         })
     })
 
-    // setInterval(() => {
-    //   fetch("http://localhost:3000/todos").then((response) => {
-    //       response.json().then((data) => {
-    //         console.log(data);
-    //         setTodo(data)
-    //       })
-    //   })
-    // }, 10000)
+    setInterval(() => {
+      fetch("http://localhost:3000/todos").then((response) => {
+          response.json().then((data) => {
+            console.log(data);
+            setTodo(data)
+          })
+      })
+    }, 10000)
   }, [])
 
   

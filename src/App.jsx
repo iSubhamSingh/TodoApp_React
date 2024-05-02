@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 
 import './App.css'
+import Input from './Input'
 
 function useTodos() {
   let [todo, setTodo] = useState([])
@@ -32,7 +33,11 @@ function App() {
 
   return (
     <>
+    <div>
+      <Input></Input>
+    </div>
       <div>
+
         {todo.map((item) => {
           return <div>
           {item.title}

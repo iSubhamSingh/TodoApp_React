@@ -9,7 +9,6 @@ function useTodos() {
   useEffect(() => {
     fetch("http://localhost:3000/todos").then((response) => {
         response.json().then((data) => {
-          
           setTodo(data)
         })
     })
@@ -21,12 +20,8 @@ function useTodos() {
             setTodo(data)
           })
       })
-    }, 10000)
+    }, 5000)
   }, [])
-
-  
-
-
 
   return todo;
 }

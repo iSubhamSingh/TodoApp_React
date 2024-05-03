@@ -19,6 +19,7 @@ function useTodos() {
           response.json().then((data) => {
             console.log(data);
             setTodo(data)
+            
           })
       })
     }, 5000)

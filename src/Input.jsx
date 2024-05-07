@@ -7,11 +7,20 @@ function Input(){
         console.log(document.getElementById("title").value);
     }
     return(
-        <div>
-            <input type = "text" placeholder="Enter the title" id="title"></input><br></br>
-            <input type = "text" placeholder="Enter description" id="desc" ></input>
-            <button type="submit" onClick={submitFn}>Submit</button>
-          
+        <div> 
+        <center>
+        <div style={{
+            margin: 20,
+            border: "2px solid black",
+            width: 500
+        }}>
+     
+            Username  <input type={"text"}></input><br/>
+            Password  <input type={"password"}></input><br/>
+            <button type="Submit">Sign Up</button>
+       
+        </div> 
+        </center>
         </div>
     )
 }

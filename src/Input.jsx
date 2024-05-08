@@ -3,9 +3,7 @@ import { useState } from "react";
 
 function Input(){
 
-    function submitFn(){
-        console.log(document.getElementById("title").value);
-    }
+    
     return(
         <div> 
         <center>
@@ -18,7 +16,7 @@ function Input(){
             Username  <input type={"text"}></input><br/>
             Password  <input type={"password"}></input><br/>
             <button type="Submit">Sign Up</button>
-       
+           
         </div> 
         </center>
         </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 
+
 function Input(){
 
     
@@ -13,7 +14,7 @@ function Input(){
             width: 500
         }}>
      
-            Username  <input type={"text"}></input><br/>
+            Username <TextField id="outlined-basic" label="Outlined" variant="outlined" />
             Password  <input type={"password"}></input><br/>
             <button type="Submit">Sign Up</button>
            

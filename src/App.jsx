@@ -42,7 +42,9 @@ function App() {
         {todo.map((item) => {
           return <div>
           {item.title}
+          <br/>
           {item.description}
+          
           </div>
         })}
       </div>

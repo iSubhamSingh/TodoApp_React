@@ -15,7 +15,7 @@ function Input(){
         }}>
      
             Username <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-            Password  <input type={"password"}></input><br/>
+            Password <TextField id="outlined-basic" label="Outlined" variant="outlined" /> 
             <button type="Submit">Sign Up</button>
            
         </div> 

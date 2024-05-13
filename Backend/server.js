@@ -1,19 +1,19 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const bodyParser = require("body-parser");
-const fs = require("fs");
-const cors = require("cors");
+import { json } from "body-parser";
+import { readFile, writeFile } from "fs";
+import cors from "cors";
 
-app.use(bodyParser.json());
+app.use(json());
 app.use(cors({
     origin: "http://localhost:5173"
 }));
 
-const path = require("path");
-const filePath = path.join(__dirname, "/todo.json");
+import { join } from "path";
+const filePath = join(__dirname, "/todo.json");
  
 app.get("/todos", (req, res) => {
-  fs.readFile(filePath, "utf-8", (err, data) => {
+  readFile(filePath, "utf-8", (err, data) => {
     res.json(JSON.parse(data));
   });
 });
@@ -29,7 +29,7 @@ function find(index, todo) {
 
 app.get("/todos/:id", (req, res) => {
   let index = req.params.id;
-  fs.readFile(filePath, "utf-8", (err, data) => {
+  readFile(filePath, "utf-8", (err, data) => {
     let todo = JSON.parse(data);
     if (find(index, todo) == -1) {
       res.status(400).send("Not found");
@@ -46,11 +46,11 @@ app.post("/todos", (req, res) => {
     title : req.body.title,
     description : req.body.description
   };
-  fs.readFile(filePath, "utf-8", (err, data) => {
+  readFile(filePath, "utf-8", (err, data) => {
     if (err) throw err;
     let todo = JSON.parse(data);
     todo.push(newTodo);
-    fs.writeFile(filePath, JSON.stringify(todo), (err) => {
+    writeFile(filePath, JSON.stringify(todo), (err) => {
       if (err) throw err;
       res.status(200).json(newTodo);
     });
@@ -64,14 +64,14 @@ app.put("/todos/:id", (req, res) => {
     title : req.body.title,
     description : req.body.description
   }
-  fs.readFile(filePath, "utf-8", (err, data) => {
+  readFile(filePath, "utf-8", (err, data) => {
     if (err) throw err;
     let todo = JSON.parse(data);
     if (find(index, todo) == -1) {
       res.sendStatus(404);
     } else {
       todo[find(index, todo)] = newTodo;
-      fs.writeFile(filePath, JSON.stringify(todo), (err) => {
+      writeFile(filePath, JSON.stringify(todo), (err) => {
         if (err) throw err;
         res.status(200).json(req.body);
       });
@@ -82,7 +82,7 @@ app.put("/todos/:id", (req, res) => {
 app.delete("/todos/:id", (req, res) => {
     let index = req.params.id;
     let flag = 0;
-    fs.readFile(filePath, "utf-8", (err, data) => {
+    readFile(filePath, "utf-8", (err, data) => {
       if (err) {
         res.sendStatus(500);  
         return;
@@ -92,7 +92,7 @@ app.delete("/todos/:id", (req, res) => {
         if (todo[i].id == index) {
           todo.splice(i, 1);
           console.log("from outside",todo);
-          fs.writeFile(filePath, JSON.stringify(todo), (err) => {
+          writeFile(filePath, JSON.stringify(todo), (err) => {
             if (err) {
               res.sendStatus(500); 
               return;

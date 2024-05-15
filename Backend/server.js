@@ -84,6 +84,7 @@ app.delete("/todos/:id", (req, res) => {
     let flag = 0;
     readFile(filePath, "utf-8", (err, data) => {
       if (err) {
+        console.log(err);
         res.sendStatus(500);  
         return;
       }

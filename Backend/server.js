@@ -24,7 +24,7 @@ function find(index, todo) {
       return i;
     }
   }
-  return -1;
+  return -1;   //returns -1 if index not found
 }
 
 app.get("/todos/:id", (req, res) => {
@@ -42,7 +42,7 @@ app.get("/todos/:id", (req, res) => {
 app.post("/todos", (req, res) => {
    
   let newTodo = {
-    id : Math.floor(Math.random()*10000)+1,
+    id : Math.floor(Math.random()*10000)+1,   // creating random id
     title : req.body.title,
     description : req.body.description
   };

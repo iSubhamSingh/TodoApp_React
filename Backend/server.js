@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 import { json } from "body-parser";
 import { readFile, writeFile } from "fs";
-import cors from "cors";
+import cors from "cors";         // importing cors to enable cross-origin resource sharing.
 
 app.use(json());
 app.use(cors({
